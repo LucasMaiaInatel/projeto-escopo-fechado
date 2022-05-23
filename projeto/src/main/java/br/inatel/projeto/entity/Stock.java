@@ -2,6 +2,7 @@ package br.inatel.projeto.entity;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -19,7 +20,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Entity
 public class Stock {
-	
+
 	@Id
 	@GeneratedValue(generator = "uuid")
 	@GenericGenerator(name = "uuid", strategy = "uuid2")
@@ -27,7 +28,7 @@ public class Stock {
 	@NotNull
 	private String stockId;
 	@NotNull
-	@OneToMany(mappedBy = "stock")
+	@OneToMany(mappedBy = "stock", cascade = CascadeType.ALL)
 	private List<Quote> quotes;
 
 }
