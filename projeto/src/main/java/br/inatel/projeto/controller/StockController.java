@@ -1,9 +1,11 @@
 package br.inatel.projeto.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,10 +27,10 @@ public class StockController {
 		return stockService.findAllStocksAndQuotes();
 	}
 
-//	@GetMapping("/{stockId}")
-//	public List<Stock> findAllQuotesByStockId(@PathVariable String stockId) {
-//		return stockService.findAllQuotesByStockId(stockId);
-//	}
+	@GetMapping("/{id}")
+	public Optional<Stock> findAllQuotesByStockId(@PathVariable String id) {
+		return stockService.findQuotesById(id);
+	}
 	
 	@PostMapping
 	public Stock saveStock(@RequestBody Stock newstock) {

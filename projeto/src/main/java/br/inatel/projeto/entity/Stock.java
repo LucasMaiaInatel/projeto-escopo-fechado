@@ -1,5 +1,6 @@
 package br.inatel.projeto.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -29,6 +30,6 @@ public class Stock {
 	private String stockId;
 	@NotNull
 	@OneToMany(mappedBy = "stock", cascade = CascadeType.ALL)
-	private List<Quote> quotes;
+	private List<Quote> quotes = new ArrayList<Quote>();
 
 }

@@ -1,6 +1,7 @@
 package br.inatel.projeto.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,12 +19,15 @@ public class StockService {
 	private StockRepository stockRepository;
 	
 	public List<StockAndQuotes> findAllStocksAndQuotes() {
-		return stockRepository.findAllStocksAndQuotes();
+		List<StockAndQuotes> findAllStocksAndQuotes = stockRepository.findAllStocksAndQuotes();
+		return findAllStocksAndQuotes;
 	}
 	
-//	public List<Stock> findAllQuotesByStockId(String stockId) {
-//		return stockRepository.findQuotesByStockId(stockId);
-//	}
+	public Optional<Stock> findQuotesById(String id) {
+		Optional<Stock> findQuotesById = stockRepository.findById(id);
+		findQuotesById.get().getQuotes().size();
+		return findQuotesById;
+	}
 	
 	public Stock saveStock(Stock stock) {
 		return stockRepository.save(stock);
